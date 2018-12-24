@@ -1,5 +1,3 @@
-//basic json for items
-//need new file for each item changing "ruby" to whichever item
 {
    "parent": "item/generated",
    "textures": {
