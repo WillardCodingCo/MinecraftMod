@@ -1,8 +1,10 @@
 package com.willardcodingco.minecraftmod.util.handler;
 
+import com.willardcodingco.minecraftmod.init.ModBlocks;
 import com.willardcodingco.minecraftmod.init.ModItems;
 import com.willardcodingco.minecraftmod.util.IHasModel;
 
+import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
@@ -13,6 +15,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class RegistryHandler
 {
 	
+	//for registering items
 	@SubscribeEvent
 	public static void onItemRegister(RegistryEvent.Register<Item> event)
 	{
@@ -21,6 +24,16 @@ public class RegistryHandler
 		
 	}
 	
+	//for registering blocks
+	@SubscribeEvent
+	public static void onBlockRegister(RegistryEvent.Register<Block> event)
+	{
+		
+		event.getRegistry().registerAll(ModBlocks.BLOCKS.toArray(new Block[0]));
+		
+	}
+	
+	//for registering models
 	@SubscribeEvent
 	public static void onModelRegister(ModelRegistryEvent event)
 	{
@@ -37,6 +50,16 @@ public class RegistryHandler
 			
 		}
 		
+		for(Block block : ModBlocks.BLOCKS)
+		{
+			
+			if(block instanceof IHasModel)
+			{
+				
+				((IHasModel)block).registerModels();
+				
+			}
+		}
 	}
 	
 }
