@@ -1,5 +1,6 @@
 package com.willardcodingco.minecraftmod;
 
+import com.willardcodingco.minecraftmod.init.ModRecipes;
 import com.willardcodingco.minecraftmod.proxy.CommonProxy;
 import com.willardcodingco.minecraftmod.util.Reference;
 
@@ -29,6 +30,8 @@ public class Main {
 	@EventHandler
 	public static void init( FMLInitializationEvent event )
 	{
+		
+		ModRecipes.init();
 		
 	}
 	
